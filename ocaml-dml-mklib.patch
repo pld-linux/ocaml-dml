@@ -1,0 +1,28 @@
+diff -ur dml-0.2/Makefile dml-0.2-/Makefile
+--- dml-0.2/Makefile	Sun May 12 18:46:02 2002
++++ dml-0.2-/Makefile	Mon May 20 23:12:20 2002
+@@ -3,7 +3,8 @@
+ # 
+ #
+ LIBS = rtcg bytecode syntax #autogen
+-LIBINSTALL=rtcg.mli eval.mli rtcg.cmi eval.cmi librtcg.a rtcg.cma rtcgbyte.cma
++LIBINSTALL=rtcg.mli eval.mli rtcg.cmi eval.cmi librtcg.a rtcg.cma rtcgbyte.cma \
++	dllrtcgbyte.so
+ P4INSTALL=dml.cmo dml-syntax.cma
+ 
+ include Makefile.in
+diff -ur dml-0.2/bytecode/Makefile dml-0.2-/bytecode/Makefile
+--- dml-0.2/bytecode/Makefile	Sun May 12 18:46:04 2002
++++ dml-0.2-/bytecode/Makefile	Mon May 20 23:15:20 2002
+@@ -18,8 +18,9 @@
+ wipe:: clean
+ 	rm ../lib/rtcgbyte.cma ../lib/librtcg.a ../lib/eval.cmi || true
+ 
+-../lib/rtcgbyte.cma : $(MODULES:%=%.cmo) 
+-	$(OC) -a -o $@ $(MODULES:%=%.cmo)   
++../lib/rtcgbyte.cma : $(MODULES:%=%.cmo) rawBytecode.o
++	ocamlmklib -o rtcgbyte $(MODULES:%=%.cmo) rawBytecode.o
++	mv rtcgbyte.cma dllrtcgbyte.so ../lib
+ 
+ opcodes.ml: instruct.h
+ 	sed -n -e '/^enum/p' -e 's/,//g' -e '/^  /p' instruct.h | \

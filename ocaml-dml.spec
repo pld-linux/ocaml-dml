@@ -1,0 +1,103 @@
+Summary:	Dynamic code generation library for OCaml
+Summary(pl):	Biblioteka do dynamicznej generacji kodu dla OCamla
+Name:		ocaml-dml
+Version:	0.2
+Release:	1
+License:	LGPL
+Group:		Libraries
+Vendor:		Dmitry Lomov <dsl@tepkom.ru>
+URL:		http://oops.tepkom.ru/dml/
+Source0:	http://oops.tepkom.ru/dml/dml-%{version}.tar.gz
+Patch0:		%{name}-mklib.patch
+BuildRequires:	ocaml
+BuildRequires:	ocaml-camlp4
+%requires_eq	ocaml-runtime
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%description
+Dynamic Caml is a library that provides dynamic (or run-time) code
+generation capabilities for Objective Caml programmer.
+
+This package contains files needed to run bytecode executables using
+this library.
+
+%description -l pl
+Dynamic Caml jest bibliotek± dostarczaj±c± mo¿liwo¶ci dynamicznej (w
+czasie wykonania programu) generacji kodu programom napisanym w
+OCamlu.
+
+Pakiet ten zawiera binaria potrzebne do uruchamiania programów
+u¿ywaj±cych tej biblioteki.
+
+%package devel
+Summary:	Dynamic code generation library - development part
+Summary(pl):	Biblioteka do dynamicznej generacji kodu - cze¶æ programistyczna
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+%requires_eq	ocaml
+%requires_eq	ocaml-camlp4
+
+%description devel
+Dynamic Caml is a library that provides dynamic (or run-time) code
+generation capabilities for Objective Caml programmer.
+
+This package contains files needed to develop OCaml programs using
+this library.
+
+%description devel -l pl
+Dynamic Caml jest bibliotek± dostarczaj±c± mo¿liwo¶ci dynamicznej (w
+czasie wykonania programu) generacji kodu programom napisanym w
+OCamlu.
+
+Pakiet ten zawiera pliki niezbêdne do tworzenia programów u¿ywaj±cych
+tej biblioteki.
+
+%prep
+%setup -q -n dml-%{version}
+%patch0 -p1
+
+%build
+./configure \
+	-cc '%{__cc} %{rpmcflags} -fPIC' \
+	-libdir %{_libdir}/ocaml/dml
+%{__make}
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/{dml,camlp4}
+%{__make} install \
+	LIBDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml/dml \
+	P4LIB=$RPM_BUILD_ROOT%{_libdir}/ocaml/camlp4
+(cd $RPM_BUILD_ROOT%{_libdir}/ocaml && ln -s dml/dll*.so .)
+
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+cp -r tests/{evalint,matrix,power,tab}.dml \
+	$RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
+install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/dml
+cat > $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/dml/META <<EOF
+requires = ""
+version = "%{version}"
+directory = "+dml"
+archive(byte) = "rtcg.cma rtcgbyte.cma"
+linkopts = ""
+EOF
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(644,root,root,755)
+%dir %{_libdir}/ocaml/dml
+%attr(755,root,root) %{_libdir}/ocaml/dml/*.so
+%{_libdir}/ocaml/*.so
+
+%files devel
+%defattr(644,root,root,755)
+%doc README ChangeLog docs/dml.ps
+%{_libdir}/ocaml/camlp4/*.cm[ao]
+%{_libdir}/ocaml/dml/*.cm[ia]*
+%{_libdir}/ocaml/dml/*.a
+%{_examplesdir}/%{name}-%{version}
+%{_libdir}/ocaml/site-lib/dml

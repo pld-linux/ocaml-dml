@@ -8,6 +8,7 @@ Group:		Libraries
 Vendor:		Dmitry Lomov <dsl@tepkom.ru>
 URL:		http://oops.tepkom.ru/dml/
 Source0:	http://oops.tepkom.ru/dml/dml-%{version}.tar.gz
+# Source0-md5:	fad59c2831dd3d8757acf1750b03566b
 Patch0:		%{name}-mklib.patch
 BuildRequires:	ocaml
 BuildRequires:	ocaml-camlp4

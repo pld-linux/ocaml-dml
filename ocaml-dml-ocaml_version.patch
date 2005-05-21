@@ -1,0 +1,17 @@
+--- dml-0.2.1/configure~	2005-05-22 01:02:16.000000000 +0200
++++ dml-0.2.1/configure	2005-05-22 01:02:16.000000000 +0200
+@@ -67,12 +67,12 @@
+ echo "Syntax extensions will be installed in $P4LIB"
+ 
+ # chech for flags
+-if [ $CC="gcc" ]; then CFLAGS='-O3'; fi
++if [ "$CC"="gcc" ]; then CFLAGS='-O3'; fi
+ 
+ # determine ocaml version
+ OCAMLVER=$(echo `ocamlc -v | sed -n 1s/\[A-Z,a-z\]\*//gp`)
+ OCAML_MAJOR=$(echo $OCAMLVER | sed -n s/\\.[0-9]\*//gp)
+-OCAML_MINOR=$(echo $OCAMLVER | sed -n s/[0-9]\*\\.//gp)
++OCAML_MINOR=$(echo $OCAMLVER | sed -n s/^[0-9]\*\\.\\\([^.]\*\\\).*/\\1/p | sed -n s/^0\*\\\(.\*.\$\\\)/\\1/p)
+ 
+ if test  $OCAML_MAJOR -lt 3 -o $OCAML_MINOR -lt 4 ; then
+     echo "ERROR!"

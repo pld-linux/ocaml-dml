@@ -10,6 +10,7 @@ URL:		http://oops.tepkom.ru/dml/
 Source0:	http://oops.tepkom.ru/dml/dml-%{version}.tar.gz
 # Source0-md5:	a92f091dfc9b81861a62de53a6801a12
 Patch0:		%{name}-mklib.patch
+Patch1:		%{name}-ocaml_version.patch
 BuildRequires:	ocaml
 BuildRequires:	ocaml-camlp4
 %requires_eq	ocaml-runtime
@@ -56,6 +57,7 @@ tej biblioteki.
 %prep
 %setup -q -n dml-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 ./configure \

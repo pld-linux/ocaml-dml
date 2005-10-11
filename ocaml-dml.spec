@@ -2,7 +2,7 @@ Summary:	Dynamic code generation library for OCaml
 Summary(pl):	Biblioteka do dynamicznej generacji kodu dla OCamla
 Name:		ocaml-dml
 Version:	0.2.1
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Vendor:		Dmitry Lomov <dsl@tepkom.ru>

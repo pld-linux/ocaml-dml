@@ -1,0 +1,19 @@
+--- dml-0.2.1/common.mak~	2002-05-22 07:37:30.000000000 +0200
++++ dml-0.2.1/common.mak	2005-12-26 00:25:56.901667750 +0100
+@@ -53,14 +53,14 @@
+ 
+ 
+ %.ml : %.ml4
+-	$(PP4) -I $(P4DIR) pa_o.cmo pa_extend.cmo q_MLast.cmo pr_o.cmo -impl \
++	$(PP4) -I $(P4DIR) pa_o.cmo pa_extend.cmo q_MLast.cmo pr_o.cmo -loc loc -impl \
+ 	$< > $@
+ 
+ # Syntax extensions (camlp4)
+ %.cmo : %.ml4
+ 	@echo compile syntax extensions...
+ 	$(OC) -pp \
+-	"$(PP4) -I $(P4DIR) pa_o.cmo pa_extend.cmo q_MLast.cmo pr_dump.cmo -impl " \
++	"$(PP4) -I $(P4DIR) pa_o.cmo pa_extend.cmo q_MLast.cmo pr_dump.cmo -loc loc -impl " \
+ 	-I $(P4DIR) $(OFLAGS) -c -impl $< 	
+ 
+ # For testing

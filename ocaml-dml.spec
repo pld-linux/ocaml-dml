@@ -1,18 +1,18 @@
+%define		ocaml_ver	3.09.1
 Summary:	Dynamic code generation library for OCaml
 Summary(pl):	Biblioteka do dynamicznej generacji kodu dla OCamla
 Name:		ocaml-dml
 Version:	0.2.1
-Release:	4
+Release:	5
 License:	LGPL
 Group:		Libraries
-Vendor:		Dmitry Lomov <dsl@tepkom.ru>
 URL:		http://oops.tepkom.ru/dml/
 Source0:	http://oops.tepkom.ru/dml/dml-%{version}.tar.gz
 # Source0-md5:	a92f091dfc9b81861a62de53a6801a12
 Patch0:		%{name}-mklib.patch
 Patch1:		%{name}-ocaml_version.patch
 Patch2:		%{name}-ocaml3.09.patch
-BuildRequires:	ocaml
+BuildRequires:	ocaml >= %{ocaml_ver}
 BuildRequires:	ocaml-camlp4
 %requires_eq	ocaml-runtime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

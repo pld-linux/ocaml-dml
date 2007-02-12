@@ -1,7 +1,7 @@
-# $Revision: 1.13 $, $Date: 2006/04/16 10:20:54 
+# $Revision: 1.14 $, $Date: 2006/04/16 10:20:54 
 %define		ocaml_ver	1:3.09.2
 Summary:	Dynamic code generation library for OCaml
-Summary(pl):	Biblioteka do dynamicznej generacji kodu dla OCamla
+Summary(pl.UTF-8):   Biblioteka do dynamicznej generacji kodu dla OCamla
 Name:		ocaml-dml
 Version:	0.2.1
 Release:	7
@@ -25,17 +25,17 @@ generation capabilities for Objective Caml programmer.
 This package contains files needed to run bytecode executables using
 this library.
 
-%description -l pl
-Dynamic Caml jest bibliotek± dostarczaj±c± mo¿liwo¶ci dynamicznej (w
+%description -l pl.UTF-8
+Dynamic Caml jest bibliotekÄ… dostarczajÄ…cÄ… moÅ¼liwoÅ›ci dynamicznej (w
 czasie wykonania programu) generacji kodu programom napisanym w
 OCamlu.
 
-Pakiet ten zawiera binaria potrzebne do uruchamiania programów
-u¿ywaj±cych tej biblioteki.
+Pakiet ten zawiera binaria potrzebne do uruchamiania programÃ³w
+uÅ¼ywajÄ…cych tej biblioteki.
 
 %package devel
 Summary:	Dynamic code generation library - development part
-Summary(pl):	Biblioteka do dynamicznej generacji kodu - cze¶æ programistyczna
+Summary(pl.UTF-8):   Biblioteka do dynamicznej generacji kodu - czeÅ›Ä‡ programistyczna
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %requires_eq	ocaml
@@ -48,12 +48,12 @@ generation capabilities for Objective Caml programmer.
 This package contains files needed to develop OCaml programs using
 this library.
 
-%description devel -l pl
-Dynamic Caml jest bibliotek± dostarczaj±c± mo¿liwo¶ci dynamicznej (w
+%description devel -l pl.UTF-8
+Dynamic Caml jest bibliotekÄ… dostarczajÄ…cÄ… moÅ¼liwoÅ›ci dynamicznej (w
 czasie wykonania programu) generacji kodu programom napisanym w
 OCamlu.
 
-Pakiet ten zawiera pliki niezbêdne do tworzenia programów u¿ywaj±cych
+Pakiet ten zawiera pliki niezbÄ™dne do tworzenia programÃ³w uÅ¼ywajÄ…cych
 tej biblioteki.
 
 %prep

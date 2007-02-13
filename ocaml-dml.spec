@@ -1,7 +1,7 @@
-# $Revision: 1.14 $, $Date: 2006/04/16 10:20:54 
+# $Revision: 1.15 $, $Date: 2006/04/16 10:20:54 
 %define		ocaml_ver	1:3.09.2
 Summary:	Dynamic code generation library for OCaml
-Summary(pl.UTF-8):   Biblioteka do dynamicznej generacji kodu dla OCamla
+Summary(pl.UTF-8):	Biblioteka do dynamicznej generacji kodu dla OCamla
 Name:		ocaml-dml
 Version:	0.2.1
 Release:	7
@@ -35,7 +35,7 @@ używających tej biblioteki.
 
 %package devel
 Summary:	Dynamic code generation library - development part
-Summary(pl.UTF-8):   Biblioteka do dynamicznej generacji kodu - cześć programistyczna
+Summary(pl.UTF-8):	Biblioteka do dynamicznej generacji kodu - cześć programistyczna
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %requires_eq	ocaml

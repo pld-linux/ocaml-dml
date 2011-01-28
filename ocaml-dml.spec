@@ -1,4 +1,3 @@
-# $Revision: 1.15 $, $Date: 2006/04/16 10:20:54 
 %define		ocaml_ver	1:3.09.2
 Summary:	Dynamic code generation library for OCaml
 Summary(pl.UTF-8):	Biblioteka do dynamicznej generacji kodu dla OCamla
